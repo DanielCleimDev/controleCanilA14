@@ -10,19 +10,20 @@ import { CadelasComponent } from './listar/cadelas/cadelas.component';
 import { CruzasComponent } from './listar/cruzas/cruzas.component';
 import { MachosComponent } from './listar/machos/machos.component';
 import { NinhadasComponent } from './listar/ninhadas/ninhadas.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: "listarCadelas", component: CadelasComponent },
-  { path: "listarMachos", component: MachosComponent },
-  { path: "listarCruzas", component: CruzasComponent },
-  { path: "listarNinhadas", component: NinhadasComponent },
-  { path: "cadastrarCadela", component: CadCadelaComponent },
-  { path: "cadastrarMacho", component: CadMachoComponent },
-  { path: "cadastrarCruza", component: CadCruzaComponent },
-  { path: "cadastrarNinhada", component: CadNinhadaComponent },
-  { path: "cadastrarFilhote", component: CadFilhoteComponent}
+  { path: "listarCadelas", component: CadelasComponent, canActivate: [AuthGuard] },
+  { path: "listarMachos", component: MachosComponent, canActivate: [AuthGuard] },
+  { path: "listarCruzas", component: CruzasComponent, canActivate: [AuthGuard] },
+  { path: "listarNinhadas", component: NinhadasComponent, canActivate: [AuthGuard] },
+  { path: "cadastrarCadela", component: CadCadelaComponent, canActivate: [AuthGuard] },
+  { path: "cadastrarMacho", component: CadMachoComponent, canActivate: [AuthGuard] },
+  { path: "cadastrarCruza", component: CadCruzaComponent, canActivate: [AuthGuard] },
+  { path: "cadastrarNinhada", component: CadNinhadaComponent, canActivate: [AuthGuard] },
+  { path: "cadastrarFilhote", component: CadFilhoteComponent, canActivate: [AuthGuard] }
 ];
 
 

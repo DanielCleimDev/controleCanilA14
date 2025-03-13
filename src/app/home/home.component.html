@@ -1,1 +1,24 @@
-<section class="d-flex justify-content-center"><h1>Bem vindo ao Controle Canil</h1></section>
+<div class="card m-2">
+  <section class="text-center">
+    <h1 class="card-header ">Bem vindo ao Controle Canil</h1>
+    <p *ngIf="logado">Usuário Logado</p>
+  </section>
+  <section *ngIf="!logado" class="card-body">
+    <h2> Login </h2>
+    <div class="form-group row">
+      <div class="col">
+        <label for="email">E-mail</label>
+        <input class="form-control" type="text" id="email" [(ngModel)]="email">
+      </div>
+        
+      <div class="col">
+        <label for="senha">Senha</label>
+        <input class="form-control" type="text" id="senha" [(ngModel)]="senha">
+      </div>
+    </div>
+  </section>
+  <div *ngIf="!logado" class="card-footer text-center">
+    <button class="btn btn-primary" (click)="login()">Entrar</button>
+  </div>
+</div>
+
