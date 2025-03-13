@@ -11,8 +11,9 @@ import { CruzasComponent } from './listar/cruzas/cruzas.component';
 import { MachosComponent } from './listar/machos/machos.component';
 import { NinhadasComponent } from './listar/ninhadas/ninhadas.component';
 
-//{ path: '', component: HomeComponent, pathMatch: 'full' },
+
 const routes: Routes = [
+  { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: "listarCadelas", component: CadelasComponent },
   { path: "listarMachos", component: MachosComponent },
   { path: "listarCruzas", component: CruzasComponent },
