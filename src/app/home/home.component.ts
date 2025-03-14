@@ -29,4 +29,9 @@ export class HomeComponent implements OnInit {
 		this.email = "";
   }
 
+  convidado(){
+    this.auth.convidado();
+    this.logado = true;
+  }
+
 }

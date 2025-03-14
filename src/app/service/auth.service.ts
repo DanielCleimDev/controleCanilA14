@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  accessToken = "xyz";
+  accessToken = "adm";
 
   constructor() { }
 
@@ -20,6 +20,10 @@ export class AuthService {
 		}
 		return false;
 	}
+
+  convidado(){
+    sessionStorage.setItem("access-token", "CV");
+  }
 
 	logout(){
 		sessionStorage.clear();

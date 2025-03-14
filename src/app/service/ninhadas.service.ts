@@ -8,11 +8,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NinhadasService {
   private apiUrl = "https://2ih8obvwec.execute-api.us-east-1.amazonaws.com/items";
+
+  private tk = sessionStorage.getItem("access-token") === "CV" ? "CV": "";
   
     constructor(private http: HttpClient) { }
   
     salvar( obj: Ninhadas) {
-      return this.http.put(this.apiUrl, { tabela: "ninhada", item: obj });
+      return this.http.put(this.apiUrl, { tabela: `${this.tk}ninhada`, item: obj });
     }
   
     deletar(id: string) {
@@ -21,7 +23,7 @@ export class NinhadasService {
           'Content-Type': 'application/json',
         },
         body: {
-          tabela: "ninhada",
+          tabela: `${this.tk}ninhada`,
           id: id
         }
       };
@@ -29,7 +31,7 @@ export class NinhadasService {
     }
   
     get(): Observable<Ninhadas[]> {
-      const url = `${this.apiUrl}/ninhada`;
+      const url = `${this.apiUrl}/${this.tk}ninhada`;
       return this.http.get<Ninhadas[]>(url);
     }
   }

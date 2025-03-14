@@ -8,11 +8,13 @@ import { Machos } from '../interface/machos';
 })
 export class FilhoteService {
   private apiUrl = "https://2ih8obvwec.execute-api.us-east-1.amazonaws.com/items";
+
+  private tk = sessionStorage.getItem("access-token") === "CV" ? "CV": "";
   
     constructor(private http: HttpClient) { }
   
     salvarCadela( obj: Cadelas) {
-      let tabela = "cadelas";
+      let tabela = `${this.tk}cadelas`;
       let item: Cadelas = {
         id: obj.id,
         nome: obj.nome,
@@ -42,7 +44,7 @@ export class FilhoteService {
         raca: obj.raca,
         ativo: "1"
       }
-      return this.http.put(this.apiUrl, { tabela: "macho", item: item });
+      return this.http.put(this.apiUrl, { tabela: `${this.tk}macho`, item: item });
       
     }
   }

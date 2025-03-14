@@ -8,11 +8,13 @@ import { Cruzas } from '../interface/cruzas';
 })
 export class CruzasService {
   private apiUrl = "https://2ih8obvwec.execute-api.us-east-1.amazonaws.com/items";
+
+  private tk = sessionStorage.getItem("access-token") === "CV" ? "CV": "";
   
     constructor(private http: HttpClient) { }
   
     salvar( obj: Cruzas) {
-      return this.http.put(this.apiUrl, { tabela: "cruza", item: obj });
+      return this.http.put(this.apiUrl, { tabela: `${this.tk}cruza`, item: obj });
     }
   
     deletar(id: string) {
@@ -21,7 +23,7 @@ export class CruzasService {
           'Content-Type': 'application/json',
         },
         body: {
-          tabela: "cruza",
+          tabela: `${this.tk}cruza`,
           id: id
         }
       };
@@ -29,7 +31,7 @@ export class CruzasService {
     }
   
     get(): Observable<Cruzas[]> {
-      const url = `${this.apiUrl}/cruza`;
+      const url = `${this.apiUrl}/${this.tk}cruza`;
       return this.http.get<Cruzas[]>(url);
     }
   }
