@@ -33,6 +33,43 @@ export class MachosComponent implements OnInit{
     ngOnInit(){
       this.get();
     }
+
+    calcularIdade(obj:|Machos) {
+        const dataNascimento = new Date(obj.dataNascimento);
+        const dataAtual = new Date();
+    
+        let idade = dataAtual.getFullYear() - dataNascimento.getFullYear();
+        let meses = dataAtual.getMonth() - dataNascimento.getMonth();
+    
+        if (meses < 0 || (meses === 0 && dataAtual.getDate() < dataNascimento.getDate())) {
+          idade--;
+          meses += 12;
+        }
+    
+        if(idade == 0){
+          if(meses > 1){
+            return `${meses} meses`;
+          }else{
+            return `${meses} mês`;
+          }
+        } else if (idade == 1){
+          if (meses == 1) {
+            return `${idade} ano e ${meses} mês`;
+          }else if (meses >1){
+            return `${idade} ano e ${meses} meses`;
+          }else{
+            return `${idade} ano`;
+          }
+        }else{
+          if (meses > 1) {
+            return `${idade} anos e ${meses} meses`;
+          }else if (meses == 1){
+            return `${idade} anos ${meses} mês`;
+          }else{
+            return `${idade} anos`;
+          }
+        }
+      }
   
     get() {
       this.sMachos.get().subscribe({

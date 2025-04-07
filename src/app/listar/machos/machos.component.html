@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-md-3" *ngFor="let macho of  machos;">
     <div class="card m-2">
-      <h5 class="card-header">{{macho.nome}}</h5>
+      <h5 class="card-header">{{macho.nome}} {{calcularIdade(macho)}}</h5>
       <div class="card-body">
         <p class="card-text">Canil: {{macho.canilOrigem}}</p>
         <p class="card-text">Data de Nascimento: {{macho.dataNascimento | date:'dd/MM/yy'}}</p>
